@@ -35,9 +35,21 @@ version number).
 
 # Usage
 
-Please see the [AbcDatalog website](https://abcdatalog.seas.harvard.edu/) for
+<!-- Please see the [AbcDatalog website](https://abcdatalog.seas.harvard.edu/) for
 information on how to use the AbcDatalog graphical user interface and how to
-interface with AbcDatalog from Java programs.
+interface with AbcDatalog from Java programs. -->
+
+Albert:
+1. Build package by running the command:
+```
+mvn package
+```
+2. Run the compiled Java:
+```
+java -cp target/classes edu.harvard.seas.pl.abcdatalog.engine.EngineFromFile <path to .dtlg file>
+# for example
+java -cp target/classes edu.harvard.seas.pl.abcdatalog.engine.EngineFromFile example/tc.dtlg
+```
 
 # Contributing
 

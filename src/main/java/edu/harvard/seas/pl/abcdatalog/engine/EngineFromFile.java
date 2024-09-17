@@ -68,14 +68,14 @@ public final class EngineFromFile {
   private static PositiveAtom makeQuery() throws DatalogParseException {
     PositiveAtom q;
     // We can construct a query by parsing text...
-    String s = "tc(X, Y)?";
+    String s = "brother(X, Y)?";
     DatalogTokenizer t = new DatalogTokenizer(new StringReader(s));
     q = DatalogParser.parseQuery(t);
     // Or we can construct it programmatically by building an AST.
-    Variable x = Variable.create("X");
-    Variable y = Variable.create("Y");
-    PredicateSym p = PredicateSym.create("tc", 2);
-    q = PositiveAtom.create(p, new Term[] {x, y});
+    // Variable x = Variable.create("X");
+    // Variable y = Variable.create("Y");
+    // PredicateSym p = PredicateSym.create("tc", 2);
+    // q = PositiveAtom.create(p, new Term[] {x, y});
     return q;
   }
 

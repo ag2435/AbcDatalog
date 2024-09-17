@@ -1,0 +1,144 @@
+% define family relationship
+mom(X,Y) :- parent(X,Y), female(X).
+dad(X,Y) :- parent(X,Y), male(X).
+female(X) :- mom(X,Y).
+male(X) :- dad(X,Y).
+
+wife(X,Y) :- married(X,Y), female(X).
+husband(X,Y) :- married(X,Y), male(X).
+married(X,Y) :- married(Y,X).
+male(X) :- husband(X,Y).
+female(X) :- wife(X,Y).
+
+parent(X,Y) :- mom(X,Y).
+parent(X,Y) :- dad(X,Y).
+
+child(X,Y) :- parent(Y,X).
+parent(X,Y) :- child(Y,X).
+
+son(X,Y) :- child(X,Y), male(X).
+daughter(X,Y) :- child(X,Y), female(X).
+
+grandparent(X,Y) :- parent(X,Z),parent(Z,Y).
+grandmother(X,Y) :- grandparent(X,Y), female(X).
+grandfather(X,Y) :- grandparent(X,Y), male(X).
+
+sibling(X,Y) :- mom(U,X), dad(V,X), mom(U,Y), dad(V,Y),X!=Y.
+brother(X,Y) :- sibling(X,Y), male(X).
+sister(X,Y) :- sibling(X,Y), female(X).
+sibling(X,Y) :- brother(X,Y).
+sibling(X,Y) :- sister(X,Y).
+
+halfsibling(X,Y) :- parent(U,X), parent(V,X), parent(U,Y), parent(W,Y), V!=W, X!=Y.
+halfsister(X,Y) :- halfsibling(X,Y), female(X).
+halfbrother(X,Y) :- halfsibling(X,Y), male(X).
+
+stepmother(X,Y) :- not mom(X,Y), married(X,Z), dad(Z,Y).
+stepfather(X,Y) :- not dad(X,Y), married(X,Z), mom(Z,Y).
+
+niece(X,Y) :- aunt(Y,X), female(X).
+niece(X,Y) :- uncle(Y,X), female(X).
+nephew(X,Y) :- aunt(Y,X), male(X).
+nephew(X,Y) :- uncle(Y,X), male(X).
+
+%%%%%%%%%%%%%%%%%%
+% robin family
+villager(robin).
+villager(sebastian).
+villager(maru).
+villager(demetrius).
+
+mom(robin, sebastian).
+dad(unknown, sebastian).
+mom(robin, maru).
+dad(demetrius, maru).
+
+male(sebastian).
+female(maru).
+
+married(robin, demetrius).
+
+% haley family
+villager(haley).
+villager(emily).
+
+sister(haley, emily).
+
+% abigail family
+villager(caroline).
+villager(abigail).
+villager(pierre).
+
+mom(caroline, abigail).
+dad(pierre, abigail).
+
+married(caroline, pierre).
+
+female(abigail).
+
+% alex family 
+villager(evelyn).
+villager(alex).
+villager(george).
+
+grandmother(evelyn, alex).
+grandfather(george, alex).
+male(alex).
+
+% sam family 
+villager(kent).
+villager(sam).
+villager(vincent).
+villager(jodi).
+
+dad(kent, sam).
+mom(jodi, sam).
+brother(sam,vincent).
+brother(vincent, sam).
+
+% marnie family 
+villager(marnie).
+villager(jas).
+villager(shane).
+
+aunt(marnie, jas).
+aunt(marnie, shane).
+niece(jas, marnie).
+nephew(shane, marnie).
+
+% penny family
+villager(pam).
+villager(penny).
+
+mom(pam, penny).
+female(penny).
+
+% clint 
+villager(clint).
+
+% lewis
+villager(lewis).
+
+% willy
+villager(willy).
+
+% sandy
+villager(sandy).
+
+% leo
+villager(leo).
+
+% elliott
+villager(elliott).
+
+% harvey
+villager(harvey).
+
+% leah
+villager(leah).
+
+% gus
+villager(gus).
+
+% linus
+villager(linus).
